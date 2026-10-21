@@ -1,81 +1,81 @@
 namespace Mesa_de_PartesVMT; 
 
-  public static class Registro_Expediente
+  public static class Registro
 {
-    public static void Registrar_expediente(
-         string[]Codigo,
-         string[]DNI, 
-         string[]Nombre,
-         string[]Direccion,
-         string[]Motivo, 
-         ref int Contador)
+    public static void RegistrarExpediente(
+         string[]codigos,
+         string[]dnis, 
+         string[]nombres,
+         string[]direcciones,
+         string[]razones, 
+         ref int contador)
     {
-        if(Contador >= Codigo.Length)
+        if(contador >= codigos.Length)
         {
             System.Console.WriteLine("No hay espacio disponible");
             return; 
         }
         System.Console.WriteLine("Ingrese DNI del solicitante");
-        string DNI_Ingresado = Console.ReadLine()?? ""; 
-        while(!Validar_Expediente.ValidarDNI(DNI_Ingresado))
+        string dni = Console.ReadLine()?? ""; 
+        while(!Validar_Expediente.ValidarDNI(dni))
         {
             System.Console.WriteLine("El DNI es incorrecto, Debe tener 8 digitos");
             System.Console.Write("Ingrese nuevamente el DNI");
-            DNI_Ingresado = Console.ReadLine()??""; 
+            dni = Console.ReadLine()??""; 
         }
         System.Console.Write("Ingrese nombres completos del solicitante:");
-         string Nombre_Ingresado= Console.ReadLine()?? ""; 
-        while(!Validar_Expediente.ValidarTexto(Nombre_Ingresado))
+         string nombre= Console.ReadLine()?? ""; 
+        while(!Validar_Expediente.ValidarTexto(nombre))
         {
             System.Console.Write("El nombre es obligatorio. Ingresar nombre correctamente");
-            Nombre_Ingresado = Console.ReadLine() ??""; 
+            nombre = Console.ReadLine() ??""; 
         }
          System.Console.Write("Ingrese apellidos completos del solicitante:");
-         string Apellido_Ingresado= Console.ReadLine()??""; 
-        while(!Validar_Expediente.ValidarTexto(Apellido_Ingresado))
+         string apellido= Console.ReadLine()??""; 
+        while(!Validar_Expediente.ValidarTexto(apellido))
         {
             System.Console.Write("El Apellido es obligatorio. Ingresar apellido correctamente");
-            Apellido_Ingresado = Console.ReadLine()??""; 
+            apellido = Console.ReadLine()??""; 
         } 
         Console.Write("Ingrese direccion domiciliaria:"); 
-         string Direccion_Ingresada= Console.ReadLine()??""; 
-        while(!Validar_Expediente.ValidarTexto(Direccion_Ingresada))
+         string direccion= Console.ReadLine()??""; 
+        while(!Validar_Expediente.ValidarTexto(direccion))
         {
             System.Console.Write("La direcciones obligatoria. Ingresela nuevamente ");
-            Direccion_Ingresada= Console.ReadLine()??""; 
+            direccion= Console.ReadLine()??""; 
         }
         System.Console.Write("Ingrese el motivo de la solicitud : ");
-         string Motivo_Ingresado = Console.ReadLine()??""; 
-        while(!Validar_Expediente.ValidarTexto(Motivo_Ingresado))
+         string motivo = Console.ReadLine()??""; 
+        while(!Validar_Expediente.ValidarTexto(motivo))
         {
             System.Console.Write("El motivo de la solicitud es obligatoria. Ingresela nuevamente");
-            Motivo_Ingresado= Console.ReadLine()??""; 
+            motivo= Console.ReadLine()??""; 
         }
-        DNI[Contador]= DNI_Ingresado; 
-        Nombre[Contador]= Nombre_Ingresado.Trim() + " " + Apellido_Ingresado.Trim();
-        Direccion[Contador]=Direccion_Ingresada.Trim();
-        Motivo[Contador]=Motivo_Ingresado.Trim(); 
-        Codigo[Contador]= "EXP-" + (Contador + 1 ).ToString("D4"); 
+        dnis[contador]= dni; 
+        nombres[contador]= nombre.Trim() + " " + apellido.Trim();
+        direcciones[contador]=direccion.Trim();
+        razones[contador]=motivo.Trim(); 
+        codigos[contador]= "EXP-" + (contador + 1 ).ToString("D4"); 
 
         System.Console.WriteLine("**********EXPEDIENTE REGISTRADO***********");
-        System.Console.WriteLine($"CODIGO {Codigo[Contador]}");
-        System.Console.WriteLine($"DNI: {DNI[Contador]} ");
-        System.Console.WriteLine($"Nombre:{Nombre[Contador]}");
-        System.Console.WriteLine($"Apellido:{Apellido_Ingresado}");
-        System.Console.WriteLine($"Direccion :{Direccion[Contador]}");
-        System.Console.WriteLine($"Motivo :{Motivo[Contador]}");
-        Contador ++; 
+        System.Console.WriteLine($"CODIGO {codigos[contador]}");
+        System.Console.WriteLine($"DNI: {dnis[contador]} ");
+        System.Console.WriteLine($"Nombre:{nombres[contador]}");
+        System.Console.WriteLine($"Apellido:{apellido}");
+        System.Console.WriteLine($"Direccion :{direcciones[contador]}");
+        System.Console.WriteLine($"Motivo :{razones[contador]}");
+        contador ++; 
     }
 }
 public class Validar_Expediente
 {
-    public static  bool ValidarDNI(string DNI)
+    public static  bool ValidarDNI(string dni)
     {
-        if(DNI.Length !=8)
+        if(dni.Length !=8)
         {
             return false; 
         }
-        foreach(char numero in DNI )
+        foreach(char numero in dni )
         {
             if(numero <'0' || numero > '9')
             {

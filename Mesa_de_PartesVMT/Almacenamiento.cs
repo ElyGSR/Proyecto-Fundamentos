@@ -11,7 +11,26 @@ public static class Almacenamiento
     public static void CargarDatos(string[] codigos, string[] dnis,
         string[] nombres, string[] direcciones, string[] razones, ref int contador)
     {
-        // TODO: etapa 2
+        if (!File.Exists(ARCHIVO)) return;
+
+        string[] lineas = File.ReadAllLines(ARCHIVO);
+        contador = 0;
+
+        foreach (string linea in lineas)
+        {
+            if (contador >= 100) break;
+
+            string[] campos = linea.Split('|');
+            if (campos.Length == 5)
+            {
+                codigos[contador] = campos[0];
+                dnis[contador] = campos[1];
+                nombres[contador] = campos[2];
+                direcciones[contador] = campos[3];
+                razones[contador] = campos[4];
+                contador++;
+            }
+        }
     }
 
     public static void GuardarDatos(string[] codigos, string[] dnis,

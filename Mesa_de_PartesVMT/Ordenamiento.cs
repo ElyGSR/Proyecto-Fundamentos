@@ -2,7 +2,7 @@ namespace Mesa_de_PartesVMT
 {
     public class Ordenamiento
     {
-        public static void OrdenarExpedientes(string[] codigos, DateTime[] fechas, string[] nombres, string[] razones)
+        public static void OrdenarExpedientes(DateTime[] fechas, string[] nombres, string[] razones)
         {
             Console.WriteLine("ORDENAR EXPEDIENTES");
 
@@ -27,11 +27,5 @@ namespace Mesa_de_PartesVMT
                 }
             }
         }
-
-        internal static void OrdenarExpedientes(string[] codigos, string[] dnis, string[] nombres, string[] direcciones, string[] razones, int contador)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

@@ -33,13 +33,13 @@ do
     switch (opcion)
     {
         case 1:
-            Registro_Expediente.Registrar_expediente(codigos, dnis, nombres, direcciones, razones, ref contador);
+            Registro.RegistrarExpediente(codigos, dnis, nombres, direcciones, razones, ref contador);
             break;
         case 2:
             Busqueda.BuscarExpediente(codigos, dnis, nombres, direcciones, razones, contador);
             break;
         case 3:
-            Ordenamiento.OrdenarExpedientes(codigos, dnis, nombres, direcciones, razones, contador);
+            Ordenamiento.OrdenarExpedientes(fechas, nombres, razones);
             break;
         case 4:
             Almacenamiento.GuardarDatos(codigos, dnis, nombres, direcciones, razones, contador);

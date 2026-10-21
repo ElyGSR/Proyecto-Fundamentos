@@ -4,7 +4,7 @@ namespace Mesa_de_PartesVMT
 {
     public class Busqueda
     {
-        public static void BuscarExpediente(string[] codigo, string[] descripcion, int total)
+public static void BuscarExpediente(string[] codigo, string[] dni, string[] nombres, string[] direcciones, string[] razones, int total) 
         {
             Console.WriteLine("BUSCAR EXPEDIENTE");
             Console.Write("Ingrese el codigo que desea buscar: ");
@@ -26,11 +26,5 @@ namespace Mesa_de_PartesVMT
                 Console.WriteLine("No se encontro ningun expediente con ese codigo.");
             }
         }
-
-        internal static void BuscarExpediente(string[] codigos, string[] dnis, string[] nombres, string[] direcciones, string[] razones, int contador)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

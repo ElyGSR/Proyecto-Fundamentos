@@ -9,7 +9,6 @@ string[] dnis = new string[MAX];
 string[] nombres = new string[MAX];
 string[] direcciones = new string[MAX];
 string[] razones = new string[MAX];
-string[] fechas = new string[MAX];
 int contador = 0;
 int opcion;
 
@@ -40,7 +39,7 @@ do
             Busqueda.BuscarExpediente(codigos, dnis, nombres, direcciones, razones, contador);
             break;
         case 3:
-            Ordenamiento.OrdenarExpedientes(fechas, nombres, razones);
+            Ordenamiento.OrdenarExpedientes(new DateTime[100], nombres, razones);
             break;
         case 4:
             Almacenamiento.GuardarDatos(codigos, dnis, nombres, direcciones, razones, contador);

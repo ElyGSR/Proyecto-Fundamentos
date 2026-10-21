@@ -33,7 +33,7 @@ do
     switch (opcion)
     {
         case 1:
-            Registro.RegistrarExpediente(codigos, dnis, nombres, direcciones, razones, ref contador);
+            Registro_Expediente.Registrar_expediente(codigos, dnis, nombres, direcciones, razones, ref contador);
             break;
         case 2:
             Busqueda.BuscarExpediente(codigos, dnis, nombres, direcciones, razones, contador);

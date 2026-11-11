@@ -2,7 +2,7 @@
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-const int MAX = 100;   // para probar el mensaje "No hay espacio", bájalo a 5
+const int MAX = 100;   // esto solo es una simulación de un "almacenamiento" de expedientes, en la práctica se usaría una base de datos
 
 string[] codigos = new string[MAX];
 string[] dnis = new string[MAX];

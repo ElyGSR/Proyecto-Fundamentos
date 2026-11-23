@@ -8,7 +8,7 @@ public static class Almacenamiento
     private static readonly string ARCHIVO =
         Path.Combine(AppContext.BaseDirectory, "expedientes_vmt.txt");
 
-    public static void CargarDatos(string[] codigos, string[] dnis,
+    public static void CargarDatos(string[] codigos, string[] documentos, string[] tiposDocumentos,
         string[] nombres, string[] direcciones, string[] razones, ref int contador)
     {
         if (!File.Exists(ARCHIVO)) return;
@@ -24,23 +24,23 @@ public static class Almacenamiento
             if (campos.Length == 5)
             {
                 codigos[contador] = campos[0];
-                dnis[contador] = campos[1];
-                nombres[contador] = campos[2];
-                direcciones[contador] = campos[3];
-                razones[contador] = campos[4];
+                documentos[contador] = campos[1];
+                tiposDocumentos[contador] = campos[2];
+                nombres[contador] = campos[3];
+                direcciones[contador] = campos[4];
+                razones[contador] = campos[5];
                 contador++;
             }
         }
     }
 
-    public static void GuardarDatos(string[] codigos, string[] dnis,
-        string[] nombres, string[] direcciones, string[] razones, int contador)
+    public static void GuardarDatos(string[] codigos, string[] documentos, string[] tiposDocumentos, string[] nombres, string[] direcciones, string[] razones, int contador)
     {
         string[] lineas = new string[contador];
 
         for (int i = 0; i < contador; i++)
         {
-            lineas[i] = codigos[i] + "|" + dnis[i] + "|" + nombres[i] + "|" +
+            lineas[i] = codigos[i] + "|" + documentos[i] + "|" + tiposDocumentos[i] + "|" +
                         direcciones[i] + "|" + razones[i];
         }
 

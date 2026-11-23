@@ -3,8 +3,10 @@ namespace Mesa_de_PartesVMT;
   public static class Registro
 {
     public static void RegistrarExpediente(
+        
          string[]codigos,
-         string[]dnis, 
+         string[]documentos,
+         string[]tiposDocumentos, 
          string[]nombres,
          string[]direcciones,
          string[]razones, 
@@ -15,13 +17,28 @@ namespace Mesa_de_PartesVMT;
             System.Console.WriteLine("No hay espacio disponible");
             return; 
         }
-        System.Console.WriteLine("Ingrese DNI del solicitante");
-        string dni = Console.ReadLine()?? ""; 
-        while(!Validar_Expediente.ValidarDNI(dni))
+
+        System.Console.WriteLine("Seleccione el tipo de Documento: ");
+        Console.WriteLine("1:DNI");
+        Console.WriteLine("2:Carnet de extrangeria");
+        Console.Write("seleccione una opcion: "); 
+        string tipos = Console.ReadLine()?? ""; 
+
+        while(tipos!= "1" && tipos != "2")
         {
-            System.Console.WriteLine("El DNI es incorrecto, Debe tener 8 digitos");
-            System.Console.Write("Ingrese nuevamente el DNI");
-            dni = Console.ReadLine()??""; 
+            Console.WriteLine("Opcion incorrecta ");
+            Console.Write("Seleccione 1  o 2 "); 
+            tipos = Console.ReadLine()??"";
+        }
+        string tiposDocumento = tipos== "1" ? "DNI" : "Carnet de extrangeria";
+        Console.Write("Ingrese el numwero de documento: "); 
+        string documento= Console.ReadLine()??"";
+
+        while(!Validar_Expediente.ValidarDocumentos(tipos, documento)) 
+        {
+            System.Console.WriteLine("El numero de documento es incorrecto");
+            System.Console.Write("Ingrese nuevamente el tipo de documento: ");
+            documento = Console.ReadLine()??""; 
         }
         System.Console.Write("Ingrese nombres completos del solicitante:");
          string nombre= Console.ReadLine()?? ""; 
@@ -51,7 +68,8 @@ namespace Mesa_de_PartesVMT;
             System.Console.Write("El motivo de la solicitud es obligatoria. Ingresela nuevamente");
             motivo= Console.ReadLine()??""; 
         }
-        dnis[contador]= dni; 
+        documentos[contador]= documento; 
+        tiposDocumentos[contador]= tiposDocumento; 
         nombres[contador]= nombre.Trim() + " " + apellido.Trim();
         direcciones[contador]=direccion.Trim();
         razones[contador]=motivo.Trim(); 
@@ -59,7 +77,8 @@ namespace Mesa_de_PartesVMT;
 
         System.Console.WriteLine("**********EXPEDIENTE REGISTRADO***********");
         System.Console.WriteLine($"CODIGO {codigos[contador]}");
-        System.Console.WriteLine($"DNI: {dnis[contador]} ");
+        System.Console.WriteLine($"TIPO DE DOCUMENTO: {tiposDocumentos[contador]} ");
+        Console.WriteLine($"NUMERO DE DOCUMENTO: {documentos[contador]}");
         System.Console.WriteLine($"Nombre:{nombres[contador]}");
         System.Console.WriteLine($"Apellido:{apellido}");
         System.Console.WriteLine($"Direccion :{direcciones[contador]}");
@@ -69,21 +88,25 @@ namespace Mesa_de_PartesVMT;
 }
 public class Validar_Expediente
 {
-    public static  bool ValidarDNI(string dni)
+    public static  bool ValidarDocumentos(string tipos, string documentos)
     {
-        if(dni.Length !=8)
+        if(tipos == "1")
+        {
+            return documentos.Length == 8 && 
+            documentos.All(char.IsDigit); 
+        }
+        else if(tipos == "2")
+        {
+            return documentos.Length >= 9 && 
+                   documentos.Length <=12 &&
+                   documentos.All(char.IsDigit);
+        }
+        else
         {
             return false; 
         }
-        foreach(char numero in dni )
-        {
-            if(numero <'0' || numero > '9')
-            {
-                return false; 
-            }
-        }
-        return true; 
     }
+    
     public static bool ValidarTexto(string texto)
     {
         return !string.IsNullOrWhiteSpace(texto)&& !texto.Contains('|'); 

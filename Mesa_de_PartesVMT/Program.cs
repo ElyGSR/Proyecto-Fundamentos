@@ -5,7 +5,8 @@ Console.OutputEncoding = System.Text.Encoding.UTF8;
 const int MAX = 100;   // para probar el mensaje "No hay espacio", bájalo a 5
 
 string[] codigos = new string[MAX];
-string[] dnis = new string[MAX];
+string[] documentos = new string[MAX];
+string[] tiposDocumentos = new string[MAX];
 string[] nombres = new string[MAX];
 string[] direcciones = new string[MAX];
 string[] razones = new string[MAX];
@@ -13,7 +14,7 @@ int contador = 0;
 int opcion;
 
 // Al iniciar: recupera los expedientes guardados antes
-Almacenamiento.CargarDatos(codigos, dnis, nombres, direcciones, razones, ref contador);
+Almacenamiento.CargarDatos(codigos, documentos, tiposDocumentos, nombres, direcciones, razones, ref contador);
 
 do
 {
@@ -33,16 +34,16 @@ do
     switch (opcion)
     {
         case 1:
-            Registro.RegistrarExpediente(codigos, dnis, nombres, direcciones, razones, ref contador);
+            Registro.RegistrarExpediente(codigos, documentos, tiposDocumentos, nombres, direcciones, razones, ref contador);
             break;
         case 2:
-            Busqueda.BuscarExpediente(codigos, dnis, nombres, direcciones, razones, contador);
+            Busqueda.BuscarExpediente(codigos, documentos, nombres, direcciones, razones, contador);
             break;
         case 3:
             Ordenamiento.OrdenarExpedientes(new DateTime[100], nombres, razones);
             break;
         case 4:
-            Almacenamiento.GuardarDatos(codigos, dnis, nombres, direcciones, razones, contador);
+            Almacenamiento.GuardarDatos(codigos, documentos, tiposDocumentos, nombres, direcciones, razones, contador);
             Console.WriteLine("Saliendo del sistema...");
             break;
         default:

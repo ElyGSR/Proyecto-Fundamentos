@@ -37,7 +37,7 @@ do
             Registro.RegistrarExpediente(codigos, documentos, tiposDocumentos, nombres, direcciones, razones, ref contador);
             break;
         case 2:
-            Busqueda.BuscarExpediente(codigos, documentos, nombres, direcciones, razones, contador);
+           Busqueda.BuscarExpediente(codigos, documentos, tiposDocumentos, nombres, direcciones, razones, contador);
             break;
         case 3:
             Ordenamiento.OrdenarExpedientes(codigos,documentos,tiposDocumentos,nombres,direcciones,razones,contador);

@@ -40,7 +40,7 @@ do
             Busqueda.BuscarExpediente(codigos, documentos, nombres, direcciones, razones, contador);
             break;
         case 3:
-            Ordenamiento.OrdenarExpedientes(new DateTime[100], nombres, razones);
+            Ordenamiento.OrdenarExpedientes(codigos,documentos,tiposDocumentos,nombres,direcciones,razones,contador);
             break;
         case 4:
             Almacenamiento.GuardarDatos(codigos, documentos, tiposDocumentos, nombres, direcciones, razones, contador);

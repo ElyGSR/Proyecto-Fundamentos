@@ -21,7 +21,7 @@ public static class Almacenamiento
             if (contador >= 100) break;
 
             string[] campos = linea.Split('|');
-            if (campos.Length == 5)
+            if (campos.Length == 6)
             {
                 codigos[contador] = campos[0];
                 documentos[contador] = campos[1];
@@ -40,8 +40,7 @@ public static class Almacenamiento
 
         for (int i = 0; i < contador; i++)
         {
-            lineas[i] = codigos[i] + "|" + documentos[i] + "|" + tiposDocumentos[i] + "|" +
-                        direcciones[i] + "|" + razones[i];
+            lineas[i] = codigos[i] + "|" +documentos[i] + "|" +tiposDocumentos[i] + "|" +nombres[i] + "|" +direcciones[i] + "|" +razones[i];
         }
 
         File.WriteAllLines(ARCHIVO, lineas);
